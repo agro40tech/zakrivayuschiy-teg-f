@@ -17,4 +17,28 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font-family);
+  font-variation-settings: "wght" var(--main-font-weight);
+  /* Градиент */
+  background-image: repeating-linear-gradient(
+      180deg,
+      var(--gradient-squire-color),
+      transparent 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--gradient-squire-color),
+      transparent 2px
+    ),
+    linear-gradient(
+      to bottom,
+      var(--gradient-from-color),
+      var(--gradient-before-color) 100%
+    );
+  background-size: cover;
+  color: var(--accent-color);
+}
+
+.header {
+  font-family: var(--accent-font-family);
 }
