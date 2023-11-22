@@ -3,4 +3,6 @@
   /* Шрифты */
   --main-font-family: "Inter-Variable", sans-serif;
   --accent-font-family: "Press-Start-2P", monospace, sans-serif;
+  --main-text-font-size: 18px;
+  --accent-text-font-size: 14px;
 }

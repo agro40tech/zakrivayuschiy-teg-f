@@ -19,8 +19,10 @@
 </head>
 
 <body class="page">
-  <header class="header">
+  <header class="header content-width">
     <nav class="theme-menu header__theme-menu">
+      <h1 class="header__logo">&lt;/html&gt;</h1>
+      <h2 class="header__title">закрывающий тег</h2>
       <!-- Не меняйте разметку этого списка, иначе скрипты перестанут работать -->
       <ul class="theme-menu__list">
         <li class="theme-menu__item">
@@ -41,9 +43,52 @@
       </ul>
     </nav>
   </header>
-  <main>
-    <p>asdasdasds</p>
+  <main class="main content-width">
+    <section class="cards-section main__cards-section">
+      <ul class="cards-section__list">
+        <li class="cards-section__item">
+          <article class="card cards-section__card">
+            <h3 class="card__title">
+              Фритрек и нулевой спринт: Подготовка к работе
+            </h3>
+            <div class="card__image-container">
+              <img class="card__img" src="./images/image.webp" alt="Пиксельная машинка в ночное время">
+              <p class="watermark">&lt;/html&gt;</p>
+            </div>
+            <div class="card__content-container">
+              <div class="card__text-container">
+                <p class="card__text">Это было самое начало пути. На этом этапе важно было проникнуться основами и
+                  настроиться на учёбу. И, возможно, подумать, как новые знания могут повлиять на ваше будущее.</p></br>
+                <p class="card__text">Предвкушение начала и неисекаемый интерес!</p>
+              </div>
+              <div class="card__buttons"><button class="card__like-button"><img class="like-icon" src="./svg/heart.svg"
+                    alt="Лайк"></button>
+                <button class="card__like-button card__button"><span class="button__text">Like</span></button>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
   </main>
+  <footer class="footer">
+    <button class="footer__button" onclick="window['modal'].showModal();" aria-controls="modal"><svg
+        class="footer__floppy-icon">
+        <use href="./svg/floppy.svg#floppy-svg">
+      </svg><span class="button__text">Сохранить на память</span></button>
+    <dialog id="modal" class="modal footer__modal">
+      <div class="modal__title-container">
+        <svg class="modal__floppy-icon">
+          <use href="./svg/floppy.svg#floppy-svg">
+        </svg>
+        <h2 class="modal__title">Вставьте<br />
+          дискету, чтобы продолжить</h2>
+      </div>
+      <form class="modal__form">
+        <button class="modal__button">ок</button>
+      </form>
+    </dialog>
+  </footer>
   <script src="./scripts/like.js"></script>
 </body>
 
