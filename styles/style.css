@@ -22,12 +22,12 @@
   font-style: normal;
   /* Градиент */
   background-image: repeating-linear-gradient(
-      180deg,
+      to left,
       var(--gradient-squire-color),
       transparent 2px
     ),
     repeating-linear-gradient(
-      90deg,
+      to bottom,
       var(--gradient-squire-color),
       transparent 2px
     ),
@@ -50,6 +50,7 @@
   text-transform: uppercase;
   background-color: var(--background-color);
   border: 2px solid var(--accent-color);
+  max-height: clamp(20.188rem, 19.219rem + 4.13vw, 22.938rem);
 }
 
 .content-width {
@@ -77,8 +78,7 @@
 .theme-menu__list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 5px;
+  gap: 7px;
 }
 
 .theme-menu__button {
@@ -87,6 +87,8 @@
   font-size: var(--accent-text-font-size);
   cursor: pointer;
   position: relative;
+  transition: ease 0.3s;
+  text-transform: uppercase;
 }
 
 .theme-menu__button:hover {
@@ -95,16 +97,47 @@
 
 .theme-menu__button:disabled {
   opacity: 0.6;
+  pointer-events: none;
 }
+
 .theme-menu__button:disabled::before {
   content: "▶";
   position: absolute;
-  left: -10px;
+  animation: arrow 0.5s ease-in-out infinite alternate-reverse;
+}
+
+.theme-menu__button::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+  transition: ease 0.3s;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+}
+
+.theme-menu__button:focus {
+  outline: 0;
+}
+
+.theme-menu__button:focus-visible {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
 }
 
 /* Секция main */
 .main {
   margin-top: 100px;
+}
+
+.cards-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 /* Стили карточки */
@@ -116,21 +149,27 @@
 }
 
 .card__title {
-  padding: 3px 0 3px 10px;
+  padding: 5px 0 5px 10px;
   font-variation-settings: "wght" var(--accent-font-weight);
   font-size: inherit;
 }
 
 .card__image-container {
   position: relative;
+  max-height: 700px;
 }
 
 .card__img {
   width: 100%;
-  min-height: 696px;
+  min-height: 700px;
+  max-height: 700px;
   object-fit: cover;
   object-position: right;
   border-bottom: 2px solid var(--accent-color);
+}
+
+.filter-blur {
+  filter: blur(5px);
 }
 
 /* Вотермарка */
@@ -161,26 +200,186 @@
   padding: 25px;
 }
 
-.card__buttons {
-  align-self: end;
+.card__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.card__like-button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 2px solid transparent;
+  align-self: flex-end;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.card__like-button {
-  background-color: unset;
-  border: 0;
-  cursor: pointer;
+.card__like-button:focus {
+  outline: 0;
 }
 
-.card__button {
+.like-icon:focus {
+  outline: 0;
+}
+
+.like-icon:focus-visible {
+  border: 2px solid var(--accent-color);
+}
+
+/* Заливка тела лайка */
+.like-icon #Body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+/* Покраска тела лайка при наведении */
+.like-icon:hover #Body {
+  fill: var(--accent-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+/* Покраска тела лайка при активном состоянии */
+.like-icon:active #Body {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+/* Крестик в лайке */
+.like-icon #Core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s linear;
+}
+
+/* Покраска тела лайка при наведении */
+.like-icon:hover #Core {
+  fill: var(--accent-color);
+  transition: fill 0.3s 0.03s linear;
+}
+
+/* Покраска тела лайка при активном состоянии */
+.like-icon:active #Core {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.03s linear;
+}
+
+/* Скрываем искры */
+.like-icon #Sparks {
+  transition: 0.3s 0.3s 2 ease-in;
+  fill: transparent;
+}
+
+/* Анимации лайка при клике */
+/* Покраска крестика при клике */
+.like-icon.is-liked #Core {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.03s linear;
+}
+
+/* Покраска тела лайка при клике */
+.like-icon.is-liked #Body {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon #Contur {
+  transition: fill 0.1s linear;
+  fill: var(--like-contur-color);
+}
+
+/* Покраска контура при клике */
+.like-icon.is-liked #Contur {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.06s linear;
+}
+
+/* Анимация увелечения лайка при клике */
+.like-icon.like-icon.is-liked #Heart {
+  transition: 0.3s ease;
+  transform-origin: center;
+  animation: changeScale 0.3s 0.1s ease-in 1 alternate;
+}
+
+/* Анимация искр при клике */
+.like-icon.like-icon.is-liked #Sparks {
+  transition: 0.3s 0.3s ease-in;
+  animation: sparksAnimation 0.3s 0.3s ease-in;
+}
+
+.button__text {
+  padding: 9px 17px;
+  width: 138px;
+  height: 38px;
+}
+
+.button-hover {
   font-family: var(--accent-font-family);
   font-size: var(--accent-text-font-size);
   border: 2px solid var(--accent-color);
   line-height: 90%;
-  padding: 9px 17px;
   cursor: pointer;
+  position: relative;
+  transition: ease 0.2s 0.2s;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.button-hover:hover {
+  color: #fff;
+}
+
+.button-hover:focus {
+  outline: 0;
+}
+
+.button-hover:focus-visible {
+  box-shadow: 2px 2px var(--accent-color);
+}
+
+.button-hover::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color);
+  transform-origin: 0 0;
+  transition: linear 0.5s;
+  transform: scaleX(0);
+}
+
+.button-hover:hover::before {
+  animation: hoverEffect 0.5s ease-in-out;
+  transform: scaleX(1);
+}
+
+.filter-contrast {
+  filter: contrast(50%);
+}
+
+.filter-brightness {
+  filter: brightness(200%);
+}
+
+.filter-grayscale {
+  filter: grayscale(0.8);
+}
+
+.filter-saturate {
+  filter: saturate(150%);
+}
+
+.filter-hue-rotate {
+  filter: hue-rotate(-50deg);
+}
+
+.filter-mix {
+  filter: contrast(129%) hue-rotate(-50deg) grayscale(0.3);
 }
 
 .footer {
@@ -199,23 +398,27 @@
   padding: 18px 19px;
 }
 
+.footer__button:hover #floppy-svg {
+  fill: white;
+}
+
 .footer__floppy-icon {
   width: 21px;
   height: 21px;
 }
 
 .modal {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  position: fixed;
+  inset: 0;
   display: flex;
   flex-direction: column;
   gap: 30px;
   padding: 30px;
   max-width: clamp(21.313rem, 21.048rem + 1.13vw, 22.063rem);
   background-color: var(--background-color);
+  border: 2px solid var(--accent-color);
+  /* Что бы покрасить флопик */
+  color: var(--accent-color);
 }
 
 .modal:not([open]) {

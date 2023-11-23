@@ -12,3 +12,43 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+@keyframes arrow {
+  from {
+    left: -15px;
+  }
+
+  to {
+    left: -11px;
+  }
+}
+
+@keyframes hoverEffect {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes changeScale {
+  from {
+    transform: scaleX(1) scaleY(1);
+  }
+
+  to {
+    transform: scaleX(1.15) scaleY(1.15);
+  }
+}
+
+@keyframes sparksAnimation {
+  from {
+    fill: var(--main-like-color);
+  }
+
+  to {
+    fill: transparent;
+  }
+}

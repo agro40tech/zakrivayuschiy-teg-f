@@ -16,6 +16,7 @@
   --gradient-squire-color: #d3d3d3;
   --gradient-from-color: #e7e7e7;
   --gradient-before-color: #1a1a1a;
+  --like-contur-color: var(--accent-color);
 }
 
 @media (prefers-color-scheme: light) {
@@ -29,6 +30,7 @@
     --gradient-squire-color: #d3d3d3;
     --gradient-from-color: #e7e7e7;
     --gradient-before-color: #1a1a1a;
+    --like-contur-color: var(--accent-color);
   }
 }
 
@@ -42,6 +44,7 @@
   --gradient-squire-color: #000;
   --gradient-from-color: #007f0c;
   --gradient-before-color: #004306;
+  --like-contur-color: var(--accent-color);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,5 +57,6 @@
     --gradient-squire-color: #000;
     --gradient-from-color: #007f0c;
     --gradient-before-color: #004306;
+    --like-contur-color: var(--accent-color);
   }
 }
