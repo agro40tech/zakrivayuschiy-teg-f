@@ -411,9 +411,9 @@
 }
 
 .modal {
+  display: none;
   position: fixed;
   inset: 0;
-  display: flex;
   flex-direction: column;
   gap: 30px;
   padding: 30px;
@@ -424,9 +424,8 @@
   color: var(--accent-color);
 }
 
-.modal:not([open]) {
-  pointer-events: none;
-  opacity: 0;
+.modal[open] {
+  display: flex;
 }
 
 .modal::backdrop {
