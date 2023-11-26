@@ -14,12 +14,17 @@
 
 */
 
+@supports (font-variation-settings: normal) {
+  .page {
+    font-family: var(--main-font-family);
+    font-variation-settings: "wght" var(--main-font-weight);
+    font-style: normal;
+  }
+}
+
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font-family);
-  font-variation-settings: "wght" var(--main-font-weight);
-  font-style: normal;
   /* Градиент */
   background-image: repeating-linear-gradient(
       to left,
@@ -155,9 +160,9 @@
 }
 
 .card__image-container {
-  position: relative;
   border-top: 2px solid var(--accent-color);
   border-bottom: 2px solid var(--accent-color);
+  position: relative;
   aspect-ratio: 1/1;
 }
 
