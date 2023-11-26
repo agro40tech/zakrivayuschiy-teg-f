@@ -17,7 +17,7 @@
 @supports (font-variation-settings: normal) {
   .page {
     font-family: var(--main-font-family);
-    font-variation-settings: "wght" var(--main-font-weight), "wdth" 116%;
+    font-variation-settings: "wght" var(--main-font-weight), "wdth" 116;
     font-style: normal;
   }
 }
