@@ -54,7 +54,7 @@
 }
 
 .content-width {
-  max-width: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
+  max-width: clamp(23rem, 15.628rem + 31.46vw, 43.938rem);
 }
 
 .theme-menu {
@@ -156,16 +156,16 @@
 
 .card__image-container {
   position: relative;
-  max-height: 700px;
+  border-top: 2px solid var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  aspect-ratio: 1/1;
 }
 
 .card__img {
   width: 100%;
-  min-height: 700px;
-  max-height: 700px;
+  height: 100%;
   object-fit: cover;
   object-position: right;
-  border-bottom: 2px solid var(--accent-color);
 }
 
 .filter-blur {
@@ -207,27 +207,41 @@
   gap: 27px;
 }
 
-.card__like-button {
-  background-color: transparent;
-  cursor: pointer;
-  transition: 0.3s ease;
-  border: 2px solid transparent;
-  align-self: flex-end;
+.card__buttons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  align-self: flex-end;
+  gap: 6px;
+}
+
+.card__icon-button {
+  background-color: transparent;
+  cursor: pointer;
+  border: 2px solid transparent;
+  padding: 0;
+  max-height: 38px;
+}
+
+.card__icon-button:focus {
+  outline: 0;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--accent-color);
+}
+
+.card__like-button {
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  transition: 0.3s ease;
+  padding: 9px 17px;
+  min-width: 130px;
+  min-height: 38px;
 }
 
 .card__like-button:focus {
   outline: 0;
-}
-
-.like-icon:focus {
-  outline: 0;
-}
-
-.like-icon:focus-visible {
-  border: 2px solid var(--accent-color);
 }
 
 /* Заливка тела лайка */
@@ -309,16 +323,9 @@
   animation: sparksAnimation 0.3s 0.3s ease-in;
 }
 
-.button__text {
-  padding: 9px 17px;
-  width: 138px;
-  height: 38px;
-}
-
 .button-hover {
   font-family: var(--accent-font-family);
   font-size: var(--accent-text-font-size);
-  border: 2px solid var(--accent-color);
   line-height: 90%;
   cursor: pointer;
   position: relative;
@@ -329,10 +336,6 @@
 
 .button-hover:hover {
   color: #fff;
-}
-
-.button-hover:focus {
-  outline: 0;
 }
 
 .button-hover:focus-visible {
@@ -461,5 +464,9 @@
 @media (max-width: 375px) {
   .content-width {
     max-width: 100%;
+  }
+
+  .footer__button {
+    flex-direction: column;
   }
 }
