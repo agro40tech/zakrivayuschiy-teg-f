@@ -14,15 +14,18 @@
 
 */
 
-@supports (font-variation-settings: normal) {
+/* @supports (font-variation-settings: normal) {
   .page {
     font-family: var(--main-font-family);
     font-variation-settings: "wght" var(--main-font-weight), "wdth" 116;
     font-style: normal;
   }
-}
+} */
 
 .page {
+  font-family: var(--main-font-family);
+  font-variation-settings: "wght" var(--main-font-weight), "wdth" 116;
+  font-style: normal;
   min-inline-size: 320px;
   min-block-size: 100dvb;
   /* Градиент */
