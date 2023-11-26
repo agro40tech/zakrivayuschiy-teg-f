@@ -392,6 +392,7 @@
         class="footer__floppy-icon">
         <use xlink:href="./svg/floppy.svg#floppy-svg" />
       </svg>Сохранить на память</button>
+    <!-- Модальное окно -->
     <dialog id="modal" class="modal footer__modal">
       <div class="modal__title-container">
         <svg class="modal__floppy-icon">
@@ -400,9 +401,8 @@
         <h2 class="modal__title">Вставьте<br />
           дискету, чтобы продолжить</h2>
       </div>
-      <form class="modal__form">
-        <button type="button" class="modal__button button-hover" onclick="
-          window['modal'].close();">ок</button>
+      <form class="modal__form" method="dialog">
+        <button class="modal__button button-hover">ок</button>
       </form>
     </dialog>
   </footer>
