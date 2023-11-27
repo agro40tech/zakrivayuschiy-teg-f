@@ -26,13 +26,13 @@
   /* Градиент */
   background-image: repeating-linear-gradient(
       to left,
-      var(--gradient-squire-color),
-      transparent 2px
+      var(--gradient-squire-color) 0 2px,
+      transparent 2px 4px
     ),
     repeating-linear-gradient(
       to bottom,
-      var(--gradient-squire-color),
-      transparent 2px
+      var(--gradient-squire-color) 0 2px,
+      transparent 2px 4px
     ),
     linear-gradient(
       to bottom,
@@ -40,6 +40,7 @@
       var(--gradient-before-color) 100%
     );
   background-size: cover;
+  background-attachment: fixed;
   color: var(--accent-color);
   display: flex;
   flex-direction: column;
@@ -53,13 +54,12 @@
   align-items: center;
   gap: 20px;
   padding: clamp(7.5rem, 7.148rem + 1.5vw, 8.5rem)
-    clamp(0.875rem, -1.469rem + 10vw, 7.531rem) 25px
+    clamp(0.875rem, -1.469rem + 10vw, 7.531rem) 20px
     clamp(0.875rem, -1.469rem + 10vw, 7.531rem);
   font-family: var(--accent-font-family);
   text-transform: uppercase;
   background-color: var(--background-color);
   border: 2px solid var(--accent-color);
-  max-height: clamp(20.188rem, 19.219rem + 4.13vw, 22.938rem);
 }
 
 .content-width {
@@ -68,6 +68,11 @@
 
 .header__logo {
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-decoration: none;
+}
+
+.header__logo:focus {
+  outline: 0;
 }
 
 .header__title {
@@ -243,85 +248,6 @@
   outline: 0;
 }
 
-/* Заливка тела лайка */
-.like-icon .Body {
-  fill: transparent;
-  transition: fill 0.3s linear;
-}
-
-/* Покраска тела лайка при наведении */
-.like-icon:hover .Body {
-  fill: var(--accent-color);
-  transition: fill 0.3s 0.05s linear;
-}
-
-/* Покраска тела лайка при активном состоянии */
-.like-icon:active .Body {
-  fill: var(--main-like-color);
-  transition: fill 0.3s 0.05s linear;
-}
-
-/* Крестик в лайке */
-.like-icon .Core {
-  fill: transparent;
-  transition: fill 0.3s 0.03s linear;
-}
-
-/* Покраска тела лайка при наведении */
-.like-icon:hover .Core {
-  fill: var(--accent-color);
-  transition: fill 0.3s 0.03s linear;
-}
-
-/* Покраска тела лайка при активном состоянии */
-.like-icon:active .Core {
-  fill: var(--main-like-color);
-  transition: fill 0.3s 0.03s linear;
-}
-
-/* Скрываем искры */
-.like-icon .Sparks {
-  transition: 0.3s 0.3s 2 ease-in;
-  fill: transparent;
-}
-
-/* Анимации лайка при клике */
-/* Покраска крестика при клике */
-.like-icon.is-liked .Core {
-  fill: var(--main-like-color);
-  transition: fill 0.3s 0.03s linear;
-}
-
-/* Покраска тела лайка при клике */
-.like-icon.is-liked .Body {
-  fill: var(--main-like-color);
-  transition: fill 0.3s 0.05s linear;
-}
-
-.like-icon .Contur {
-  transition: fill 0.1s linear;
-  fill: var(--like-contur-color);
-}
-
-/* Покраска контура при клике */
-.like-icon.is-liked .Contur {
-  fill: var(--main-like-color);
-  transition: fill 0.3s 0.06s linear;
-}
-
-/* Анимация увелечения лайка при клике */
-.like-icon.like-icon.is-liked .Heart {
-  transition: 0.3s ease;
-  transform-origin: center;
-  animation: changeScale 0.3s 0.1s ease-in 1 alternate;
-}
-
-/* Анимация искр при клике */
-.like-icon.like-icon.is-liked .Sparks {
-  transition: 0.3s 0.3s ease-in;
-  animation: sparksAnimation 0.3s 0.3s ease-in;
-}
-
 .button-hover {
   font-family: var(--accent-font-family);
   font-size: var(--accent-text-font-size);
@@ -334,7 +260,11 @@
 }
 
 .button-hover:hover {
-  color: #fff;
+  color: var(--background-color);
+}
+
+.button-hover:focus {
+  outline: 0;
 }
 
 .button-hover:focus-visible {
@@ -384,11 +314,13 @@
   filter: contrast(129%) hue-rotate(-50deg) grayscale(0.3);
 }
 
-.footer {
+.cards-section__print-container {
   margin-top: 55px;
+  display: flex;
+  justify-content: center;
 }
 
-.footer__button {
+.print__button {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -400,13 +332,13 @@
   padding: 18px 19px;
 }
 
-.footer__button:hover #floppy-svg {
+.print__button:hover #floppy-svg {
   fill: white;
 }
 
-.footer__floppy-icon {
-  width: 21px;
-  height: 21px;
+.print__floppy-icon {
+  inline-size: 21px;
+  block-size: 21px;
 }
 
 .modal {
@@ -437,11 +369,12 @@
 }
 
 .modal__floppy-icon {
-  width: 39px;
-  height: 39px;
+  inline-size: 39px;
+  block-size: 39px;
 }
 
 .modal__title {
+  max-width: 230px;
   font-family: var(--accent-font-family);
   font-size: var(--accent-text-font-size);
   color: var(--accent-color);
@@ -464,7 +397,20 @@
     max-width: 100%;
   }
 
-  .footer__button {
+  .print__button {
     flex-direction: column;
+  }
+
+  .print__floppy-icon {
+    inline-size: 28px;
+    block-size: 28px;
+  }
+
+  .modal {
+    padding: 30px 40px;
+  }
+
+  .modal__title {
+    max-width: 198px;
   }
 }

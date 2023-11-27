@@ -52,3 +52,82 @@
     fill: transparent;
   }
 }
+
+/* Заливка тела лайка */
+.like-icon .Body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+/* Покраска тела лайка при наведении */
+.like-icon:hover .Body {
+  fill: var(--accent-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+/* Покраска тела лайка при активном состоянии */
+.like-icon:active .Body {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+/* Крестик в лайке */
+.like-icon .Core {
+  fill: transparent;
+  transition: fill 0.3s 0.03s linear;
+}
+
+/* Покраска тела лайка при наведении */
+.like-icon:hover .Core {
+  fill: var(--accent-color);
+  transition: fill 0.3s 0.03s linear;
+}
+
+/* Покраска тела лайка при активном состоянии */
+.like-icon:active .Core {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.03s linear;
+}
+
+/* Скрываем искры */
+.like-icon .Sparks {
+  transition: 0.3s 0.3s 2 ease-in;
+  fill: transparent;
+}
+
+/* Анимации лайка при клике */
+/* Покраска крестика при клике */
+.like-icon.is-liked .Core {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.03s linear;
+}
+
+/* Покраска тела лайка при клике */
+.like-icon.is-liked .Body {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon .Contur {
+  transition: fill 0.1s linear;
+  fill: var(--like-contur-color);
+}
+
+/* Покраска контура при клике */
+.like-icon.is-liked .Contur {
+  fill: var(--main-like-color);
+  transition: fill 0.3s 0.06s linear;
+}
+
+/* Анимация увелечения лайка при клике */
+.like-icon.like-icon.is-liked .Heart {
+  transition: 0.3s ease;
+  transform-origin: center;
+  animation: changeScale 0.3s 0.1s ease-in 1 alternate;
+}
+
+/* Анимация искр при клике */
+.like-icon.like-icon.is-liked .Sparks {
+  transition: 0.3s 0.3s ease-in;
+  animation: sparksAnimation 0.3s 0.3s ease-in;
+}
